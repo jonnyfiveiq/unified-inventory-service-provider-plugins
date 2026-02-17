@@ -9,11 +9,12 @@ dependencies = [
 ]
 
 [project.entry-points."inventory_providers"]
-vmware_vcenter = "provider:VMwareVSphereProvider"
+vmware_vcenter = "inventory_provider_vmware_vcenter.provider:VMwareVSphereProvider"
 
 [build-system]
 requires = ["setuptools>=75.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-py-modules = ["provider"]
+packages = ["inventory_provider_vmware_vcenter"]
+package-dir = {"inventory_provider_vmware_vcenter" = "."}
