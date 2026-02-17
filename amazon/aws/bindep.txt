@@ -1,0 +1,6 @@
+# System package dependencies for the AWS provider.
+# boto3/botocore are pure Python - no system packages needed at runtime.
+gcc [compile platform:rpm]
+python3-devel [compile platform:rpm]
+gcc [compile platform:dpkg]
+python3-dev [compile platform:dpkg]

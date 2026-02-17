@@ -1,0 +1,20 @@
+[project]
+name = "inventory-provider-amazon-aws"
+version = "0.1.0"
+description = "AWS inventory collection provider plugin for EC2, VPC, S3, RDS, Lambda, EKS, and more"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+dependencies = [
+    "boto3>=1.34",
+]
+
+[project.entry-points."inventory_providers"]
+amazon_aws = "inventory_provider_amazon_aws.provider:AWSCloudProvider"
+
+[build-system]
+requires = ["setuptools>=75.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["inventory_provider_amazon_aws"]
+package-dir = {"inventory_provider_amazon_aws" = "."}

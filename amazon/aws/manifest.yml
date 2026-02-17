@@ -1,0 +1,66 @@
+---
+namespace: amazon
+name: aws
+version: 0.1.0
+display_name: "Amazon Web Services"
+description: >-
+  Collects inventory from AWS accounts via the boto3 SDK. Discovers EC2
+  instances, VPCs, security groups, EBS volumes, S3 buckets, RDS instances,
+  load balancers, Lambda functions, EKS clusters, and Auto Scaling groups
+  across one or more regions.
+vendor: aws
+provider_type: aws
+infrastructure: public_cloud
+authors:
+  - Ansible Inventory Team <inventory@ansible.com>
+license:
+  - GPL-3.0-or-later
+repository: https://github.com/ansible/inventory-service
+requires_python: ">=3.12"
+ansible_collection: amazon.aws
+supported_resource_types:
+  - virtual_machine
+  - vpc
+  - security_group
+  - block_storage
+  - object_storage
+  - relational_db
+  - load_balancer
+  - serverless_function
+  - container_orchestration_platform
+  - auto_scaling_group
+connection_parameters:
+  - name: access_key_id
+    description: "AWS access key ID"
+    type: string
+    required: true
+  - name: secret_access_key
+    description: "AWS secret access key"
+    type: string
+    required: true
+    secret: true
+  - name: session_token
+    description: "AWS session token (for temporary credentials)"
+    type: string
+    required: false
+    secret: true
+  - name: region
+    description: "Primary AWS region (e.g. us-east-1)"
+    type: string
+    required: false
+  - name: regions
+    description: "List of AWS regions to collect from"
+    type: list
+    required: false
+  - name: assume_role_arn
+    description: "IAM role ARN for cross-account collection"
+    type: string
+    required: false
+  - name: external_id
+    description: "External ID for STS AssumeRole"
+    type: string
+    required: false
+dependencies:
+  python: requirements.txt
+  collections: requirements.yml
+  system: bindep.txt
