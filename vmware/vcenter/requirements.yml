@@ -1,0 +1,16 @@
+---
+# Ansible collection dependencies for the VMware vSphere provider.
+# Format: same as ansible-galaxy collection requirements.yml
+#
+# Install with:
+#   ansible-galaxy collection install -r requirements.yml
+#
+# These collections are used by the provider for:
+#   - vmware.vmware: Core VMware modules for targeted collection runs
+#   - ansible.utils: Utility filters for data normalization
+
+collections:
+  - name: vmware.vmware
+    version: ">=1.5.0"
+  - name: ansible.utils
+    version: ">=2.0.0"

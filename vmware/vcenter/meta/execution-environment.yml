@@ -1,0 +1,12 @@
+---
+# Execution environment metadata for the VMware vSphere provider.
+# Format: same as Ansible collection meta/execution-environment.yml
+#
+# ansible-builder reads this to locate dependency files when building
+# execution environment container images. If this file is absent,
+# ansible-builder falls back to requirements.txt and bindep.txt
+# at the provider package root.
+
+dependencies:
+  python: requirements.txt
+  system: bindep.txt

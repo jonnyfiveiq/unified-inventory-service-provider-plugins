@@ -1,0 +1,10 @@
+# Python dependencies for the VMware vSphere inventory provider.
+# Format: PEP 508 (same as Ansible collection requirements.txt)
+#
+# Install with:
+#   pip install -r requirements.txt
+#
+# These are automatically picked up by ansible-builder when the provider
+# is packaged inside an Ansible collection.
+
+pyvmomi>=8.0.3.0.1

@@ -1,0 +1,18 @@
+---
+# Runtime metadata for the VMware vSphere provider.
+# Format: same as Ansible collection meta/runtime.yml
+#
+# Declares compatibility constraints and plugin routing so the
+# inventory service and ansible-core can validate provider compatibility.
+
+# Minimum ansible-core version required (PEP 440 specifier)
+requires_ansible: ">=2.16"
+
+# Minimum inventory-service version required
+requires_inventory_service: ">=0.1.0"
+
+# Provider routing — future use for deprecation/redirect
+# Same structure as collection plugin_routing
+provider_routing:
+  redirect: null
+  deprecation: null

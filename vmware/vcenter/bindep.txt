@@ -1,0 +1,24 @@
+# System package dependencies for the VMware vSphere provider.
+# Format: bindep (https://docs.opendev.org/opendev/bindep/)
+#
+# Used by ansible-builder to install OS-level packages into
+# execution environments. Same format as Ansible collections.
+#
+# Profiles:
+#   (none)    = runtime — always installed
+#   [compile] = needed only to compile Python packages
+#   [test]    = needed only for running tests
+
+# Runtime: libxml2 and libxslt are needed by lxml (pyVmomi dependency)
+libxml2 [platform:rpm]
+libxslt [platform:rpm]
+libxml2-dev [platform:dpkg]
+libxslt1-dev [platform:dpkg]
+
+# Compile: headers needed to build lxml from source
+libxml2-devel [compile platform:rpm]
+libxslt-devel [compile platform:rpm]
+gcc [compile platform:rpm]
+python3-devel [compile platform:rpm]
+gcc [compile platform:dpkg]
+python3-dev [compile platform:dpkg]

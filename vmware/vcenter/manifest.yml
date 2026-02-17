@@ -1,0 +1,74 @@
+---
+# Provider manifest — mirrors Ansible collection galaxy.yml format.
+# This file declares the provider's identity, version, dependencies,
+# and supported resource types so the inventory service (and eventually
+# ansible-builder) can resolve everything needed at install time.
+
+namespace: vmware
+name: vcenter
+version: 0.1.0
+
+display_name: "VMware vSphere (vCenter)"
+description: >-
+  Collects inventory from VMware vCenter Server and standalone ESXi hosts
+  via the vSphere SOAP API (pyVmomi). Discovers datacenters, clusters,
+  ESXi hosts, virtual machines, datastores, and resource pools.
+
+vendor: vmware
+provider_type: vcenter
+infrastructure: private_cloud
+
+# Authors & metadata (same keys as galaxy.yml)
+authors:
+  - Ansible Inventory Team <inventory@ansible.com>
+license:
+  - GPL-3.0-or-later
+repository: https://github.com/ansible/inventory-service
+documentation: https://github.com/ansible/inventory-service/tree/main/docs/providers/vmware_vsphere
+
+# Minimum Python version required by this provider
+requires_python: ">=3.12"
+
+# Ansible collection this provider aligns with (for future packaging)
+ansible_collection: vmware.vmware
+
+# Resource types this provider can collect (must exist in taxonomy)
+supported_resource_types:
+  - virtual_machine
+  - hypervisor_host
+  - container_orchestration_platform    # clusters
+  - block_storage                        # datastores
+  - auto_scaling_group                   # resource pools
+
+# Connection parameters this provider expects in Provider.connection_config
+connection_parameters:
+  - name: username
+    description: "vSphere username (e.g. administrator@vsphere.local)"
+    type: string
+    required: true
+  - name: password
+    description: "vSphere password"
+    type: string
+    required: true
+    secret: true
+  - name: port
+    description: "vSphere API port"
+    type: integer
+    required: false
+    default: 443
+  - name: validate_certs
+    description: "Whether to verify TLS certificates"
+    type: boolean
+    required: false
+    default: true
+  - name: datacenter
+    description: "Limit collection to a specific datacenter name"
+    type: string
+    required: false
+
+# Dependency file references (matches collection conventions)
+# These paths are relative to the provider package directory.
+dependencies:
+  python: requirements.txt
+  collections: requirements.yml
+  system: bindep.txt
