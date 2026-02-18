@@ -155,13 +155,13 @@ curl -X POST \
     "infrastructure": "private_cloud",
     "vendor": "vmware",
     "provider_type": "vcenter",
-    "endpoint": "https://vcsa01.lab.local/sdk",
+    "endpoint": "vcsa01.lab.local",
     "organization": 1,
     "connection_config": {
       "username": "administrator@vsphere.local",
       "password": "secret",
       "port": 443,
-      "validate_certs": false
+      "verify_ssl": false
     }
   }' \
   http://localhost:44926/api/inventory/v1/providers/
