@@ -70,14 +70,14 @@ class VMwareVSphereProvider(BaseProvider):
         """Connect to vCenter / ESXi using pyVmomi."""
         try:
             from pyVmomi import vim  # noqa: F401
-            from pyVmomi.connect import SmartConnect, Disconnect
+            from pyVim.connect import SmartConnect, Disconnect
         except ImportError:
             raise ImportError(
                 "pyvmomi is required for the VMware vSphere provider. "
                 "Install with: pip install inventory-providers[vmware]"
             )
 
-        validate_certs = self.credential.extra.get("validate_certs", True)
+        validate_certs = self.credential.extra.get("validate_certs", self.credential.extra.get("verify_ssl", True))
 
         connect_kwargs = {
             "host": self.credential.hostname,
@@ -114,7 +114,7 @@ class VMwareVSphereProvider(BaseProvider):
         """Disconnect from vSphere."""
         if self._si is not None:
             try:
-                from pyVmomi.connect import Disconnect
+                from pyVim.connect import Disconnect
                 Disconnect(self._si)
             except Exception:
                 pass
